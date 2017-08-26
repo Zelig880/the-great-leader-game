@@ -29,13 +29,47 @@ BasicGame.Game.prototype = {
 
     create: function () {
 
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+        //All Map loading
+        map = this.add.tilemap('map');
+        map.addTilesetImage("Tileset1"); 
+        map.addTilesetImage("BuildingsTileset"); 
+        layer = map.createLayer('basic tiles');
+        layer = map.createLayer('landscape');
+        layer.resizeWorld();
 
+
+        this.input.addMoveCallback(this.updateMarker, this);
+
+        cursorBorder = this.add.graphics();
+        cursorBorder.lineStyle(2, 0x000000, 1);
+        cursorBorder.drawRect(0, 0, 32, 32);
+
+
+        var tileSelector = this.add.group();
+        var tileStrip = tileSelector.create(1, 1, 'BuildingsTileset');
+        tileStrip.inputEnabled = true;
+        tileStrip.events.onInputDown.add(this.selectBuilding, this);
     },
 
     update: function () {
 
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
+
+    },
+    
+    selectBuilding: function(sprite, pointer){
+        var buildingTilesetIndex = 5209;
+        selectedBuilding = buildingTilesetIndex + this.math.snapToFloor(pointer.x, 32) / 32;
+    },
+
+    updateMarker: function() {
+
+        cursorBorder.x = layer.getTileX(this.input.activePointer.worldX) * 32;
+        cursorBorder.y = layer.getTileY(this.input.activePointer.worldY) * 32;
+
+        if (this.input.mousePointer.isDown)
+        {
+            map.putTile(selectedBuilding, layer.getTileX(cursorBorder.x), layer.getTileY(cursorBorder.y), layer);
+        }
 
     },
 

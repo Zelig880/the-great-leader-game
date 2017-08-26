@@ -12,19 +12,22 @@ BasicGame.Preloader.prototype = {
 
 	preload: function () {
 
-		//	These are the assets we loaded in Boot.js
-		//	A nice sparkly background and a loading progress bar
+		//preloader details
 		this.background = this.add.sprite(0, 0, 'preloaderBackground');
 
-		//	Here we load the rest of the assets our game needs.
-		//	As this is just a Project Template I've not provided these assets, swap them for your own.
+		//Images
 		this.load.image('logo', 'images/logo.png');
 		this.load.image('playButton', 'images/playButton.png');
+			//Buildings
+			this.load.image("villageHall", "images/buildings/VillageHall.png");
 
+		//Maps & tileset
+		this.load.tilemap('map', 'maps/map50x50.json', null, Phaser.Tilemap.TILED_JSON);
+		this.load.image('Tileset1', 'maps/tileset1-32x32.png');
+		this.load.image('BuildingsTileset', 'images/buildings/buildingTileset.png');
 	},
 
 	create: function () {
-
 	},
 
 	update: function () {
