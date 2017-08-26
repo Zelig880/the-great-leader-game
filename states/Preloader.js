@@ -17,7 +17,9 @@ BasicGame.Preloader.prototype = {
 
 		//Images
 		this.load.image('logo', 'images/logo.png');
-		this.load.image('playButton', 'images/playButton.png');
+			//buttons
+			this.load.image('playButton', 'images/buttons/playButton.png');
+			this.load.image('buildingButton', 'images/buttons/building.png');
 			//Buildings
 			this.load.image("villageHall", "images/buildings/VillageHall.png");
 

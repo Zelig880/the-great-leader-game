@@ -4,4 +4,5 @@ var game,
     map,
     cursorBorder,
     layer,
-    selectedBuilding;
+    selectedBuilding,
+    buildingMenu;

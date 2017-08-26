@@ -39,26 +39,23 @@ BasicGame.Game.prototype = {
 
 
         this.input.addMoveCallback(this.updateMarker, this);
-
         cursorBorder = this.add.graphics();
         cursorBorder.lineStyle(2, 0x000000, 1);
         cursorBorder.drawRect(0, 0, 32, 32);
 
+        
+		buildingButton = this.add.button(this.world.right - 32, this.world.bottom - 32, 'buildingButton', engine.showBuildingMenu, this);
 
-        var tileSelector = this.add.group();
-        var tileStrip = tileSelector.create(1, 1, 'BuildingsTileset');
-        tileStrip.inputEnabled = true;
-        tileStrip.events.onInputDown.add(this.selectBuilding, this);
+
+        buildingMenu  = this.add.sprite(1, 1, 'BuildingsTileset');
+        buildingMenu.inputEnabled = true;
+        buildingMenu.events.onInputDown.add(this.selectBuilding, this);
+        buildingMenu.visible = false;
 
         engine.placeVillageHall();
     },
 
     update: function () {
-        
-        if (this.input.mousePointer.isDown)
-        {
-            engine.handleClick(this.input.mousePointer.x, this.input.mousePointer.y);
-        }
 
     },
     
@@ -72,10 +69,10 @@ BasicGame.Game.prototype = {
         cursorBorder.x = layer.getTileX(this.input.activePointer.worldX) * 32;
         cursorBorder.y = layer.getTileY(this.input.activePointer.worldY) * 32;
 
-        // if (this.input.mousePointer.isDown)
-        // {
-        //     map.putTile(selectedBuilding, layer.getTileX(cursorBorder.x), layer.getTileY(cursorBorder.y), layer);
-        // }
+        if (this.input.mousePointer.isDown)
+        {
+            map.putTile(selectedBuilding, layer.getTileX(cursorBorder.x), layer.getTileY(cursorBorder.y), layer);
+        }
 
     },
 
