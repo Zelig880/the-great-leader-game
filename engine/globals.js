@@ -1,5 +1,7 @@
 //This file will include all the global variables
-var map,
+var game,
+    engine,
+    map,
     cursorBorder,
     layer,
     selectedBuilding;

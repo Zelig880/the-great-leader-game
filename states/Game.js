@@ -49,10 +49,16 @@ BasicGame.Game.prototype = {
         var tileStrip = tileSelector.create(1, 1, 'BuildingsTileset');
         tileStrip.inputEnabled = true;
         tileStrip.events.onInputDown.add(this.selectBuilding, this);
+
+        engine.placeVillageHall();
     },
 
     update: function () {
-
+        
+        if (this.input.mousePointer.isDown)
+        {
+            engine.handleClick(this.input.mousePointer.x, this.input.mousePointer.y);
+        }
 
     },
     
@@ -66,10 +72,10 @@ BasicGame.Game.prototype = {
         cursorBorder.x = layer.getTileX(this.input.activePointer.worldX) * 32;
         cursorBorder.y = layer.getTileY(this.input.activePointer.worldY) * 32;
 
-        if (this.input.mousePointer.isDown)
-        {
-            map.putTile(selectedBuilding, layer.getTileX(cursorBorder.x), layer.getTileY(cursorBorder.y), layer);
-        }
+        // if (this.input.mousePointer.isDown)
+        // {
+        //     map.putTile(selectedBuilding, layer.getTileX(cursorBorder.x), layer.getTileY(cursorBorder.y), layer);
+        // }
 
     },
 

@@ -14,6 +14,7 @@ BasicGame.MainMenu.prototype = {
 
 		this.playButton = this.add.button(200, 300, 'playButton', this.startGame, this);
 
+
 	},
 
 	update: function () {
