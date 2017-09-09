@@ -20,29 +20,29 @@ App.listen(port, function() {
     console.log("Server running at: http://localhost:" + port)
 });
 
-Mongo.connect(dbUrl, function(err, db) {
-    if (err) throw err;
+// Mongo.connect(dbUrl, function(err, db) {
+//     if (err) throw err;
 
-    db.collection("Buildings").drop();
+//     db.collection("Buildings").drop();
 
-    db.collection("Buildings").insertMany(
-        [
-            { name: "Wood Cutter", Resources: { wood: 10, stone: 5}, Time: 120 },
-            { name: "Stone Cutter", Resources: { wood: 5, stone: 10}, Time: 180 }
-        ], 
-        function(err, result) {
-            console.log("Inserted a document into the  collection.");
-            console.log(result);
+//     db.collection("Buildings").insertMany(
+//         [
+//             { name: "Wood Cutter", Resources: { wood: 10, stone: 5}, Time: 120 },
+//             { name: "Stone Cutter", Resources: { wood: 5, stone: 10}, Time: 180 }
+//         ], 
+//         function(err, result) {
+//             console.log("Inserted a document into the  collection.");
+//             console.log(result);
             
-        }
-    );
+//         }
+//     );
     
-    db.collection("Buildings").findOne(
-        {name: "Wood Cutter"}, 
-        function(err, result) {
-            console.log("Collection found");
-            console.log(result);
-    });
+//     db.collection("Buildings").findOne(
+//         {name: "Wood Cutter"}, 
+//         function(err, result) {
+//             console.log("Collection found");
+//             console.log(result);
+//     });
 
-    db.close();
-});
+//     db.close();
+// });
