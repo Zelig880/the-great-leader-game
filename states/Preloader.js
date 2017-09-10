@@ -22,11 +22,18 @@ BasicGame.Preloader.prototype = {
 			this.load.image('buildingButton', 'images/buttons/building.png');
 			//Buildings
 			this.load.image("villageHall", "images/buildings/VillageHall.png");
+			this.load.image("A", "images/buildings/A.png");
+			this.load.image("B", "images/buildings/B.png");
+			this.load.image("C", "images/buildings/C.png");
+			this.load.image("D", "images/buildings/D.png");
+			//menus
+			this.load.image("buildingMenu", "images/menus/buildingMenu.png");
+			
 
 		//Maps & tileset
 		this.load.tilemap('map', 'maps/map50x50.json', null, Phaser.Tilemap.TILED_JSON);
 		this.load.image('Tileset1', 'maps/tileset1-32x32.png');
-		this.load.image('BuildingsTileset', 'images/buildings/buildingTileset.png');
+		//this.load.image('BuildingsTileset', 'images/buildings/buildingTileset.png');
 	},
 
 	create: function () {
