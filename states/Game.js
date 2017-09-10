@@ -32,7 +32,6 @@ BasicGame.Game.prototype = {
         //All Map loading
         map = this.add.tilemap('map');
         map.addTilesetImage("Tileset1"); 
-        map.addTilesetImage("BuildingsTileset"); 
         layer = map.createLayer('basic tiles');
         layer = map.createLayer('landscape');
         layer.resizeWorld();
@@ -46,28 +45,13 @@ BasicGame.Game.prototype = {
         
 		buildingButton = this.add.button(this.world.right - 32, this.world.bottom - 32, 'buildingButton', engine.showBuildingMenu, this);
 
-        buildingMenu = this.add.sprite((this.camera.width / 2) - 250, (this.camera.height / 2) - 150, 'buildingMenu');
-        buildingMenu.visible = false;
-        buildingMenu.addChild(this.make.button(50, 50, "A", this.selectBuilding, this));
-        buildingMenu.addChild(this.make.button(100, 50, "B", this.selectBuilding, this));
-        buildingMenu.addChild(this.make.button(150, 50, "C", this.selectBuilding, this));
-        buildingMenu.addChild(this.make.button(200, 50, "D", this.selectBuilding, this));
-
-        // buildingMenu  = this.add.sprite(1, 1, 'BuildingsTileset');
-        // buildingMenu.inputEnabled = true;
-        // buildingMenu.events.onInputDown.add(this.selectBuilding, this);
-        // buildingMenu.visible = false;
-
+        engine.createBuildingMenu();
+        engine.startWorldTime();
         engine.placeVillageHall();
     },
 
     update: function () {
 
-    },
-    
-    selectBuilding: function(sprite, pointer){
-        selectedBuilding = sprite.key;
-        buildingMenu.visible = false;
     },
 
     updateMarker: function() {
@@ -80,7 +64,7 @@ BasicGame.Game.prototype = {
         if (this.input.mousePointer.isDown && buildingMenu.visible === false && cursorBorder.y < lastRow)
         {
             this.add.sprite(cursorBorder.x, cursorBorder.y, selectedBuilding);
-            //map.putTile(selectedBuilding, layer.getTileX(cursorBorder.x), layer.getTileY(cursorBorder.y), layer);
+            game.world.bringToTop(buildingMenu);
         }
 
     },
