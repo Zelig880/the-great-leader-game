@@ -46,7 +46,7 @@ BasicGame.Game.prototype = {
 		buildingButton = this.add.button(this.world.right - 32, this.world.bottom - 32, 'buildingButton', engine.showBuildingMenu, this);
 
         engine.createBuildingMenu();
-        engine.startWorldTime();
+        timeManagement.startWorldTime();
         engine.placeVillageHall();
     },
 

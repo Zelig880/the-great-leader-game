@@ -5,6 +5,4 @@ var game,
     cursorBorder,
     layer,
     selectedBuilding,
-    buildingMenu,
-    worldYear,
-    worldYearText;
+    buildingMenu;

@@ -33,18 +33,5 @@ class Engine {
         selectedBuilding = sprite.key;
         buildingMenu.visible = false;
     }
-
-    startWorldTime(){
-        worldYear = -2000;
-        var style = { font: "24px Arial", fill: "#ffffff", align: "center" };
-        game.time.events.loop(Phaser.Timer.SECOND * 15, this.addTimeToWorldClock, game);
-        worldYearText = game.add.text(game.world.centerX, 25, `${worldYear} BC`, style);
-    }
-
-    addTimeToWorldClock(){
-        worldYear++;
-        worldYearText.text = `${worldYear} BC`;
-
-    }
     
 }
